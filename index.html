@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survei Aspirasi Jemaat - GKSBS Palmerah Jambi</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        
+        /* HEADER: Biru dan Emas Gradient */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #d4af37 100%);
+            color: white;
+            border-bottom: 4px solid #d4af37;
+        }
+        
+        /* LOGO: Minimalis Border Lingkaran */
+        .logo-box {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border: 4px solid #d4af37;
+            border-radius: 50%;
+            padding: 10px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            margin: 10px 0 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header h2 {
+            font-size: 16px;
+            margin: 0 0 10px;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+        .subtitle {
+            font-style: italic;
+            font-size: 14px;
+            opacity: 0.85;
+        }
+
+        .section {
+            padding: 25px;
+            margin: 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        /* WARNA BERBEDA TIAP SECTION */
+        .section-intro {
+            background-color: #ffffff;
+        }
+        .section-data {
+            background-color: #e3f2fd;
+            border-left: 5px solid #2196f3;
+        }
+        .section-pendapat {
+            background-color: #f3e5f5;
+            border-left: 5px solid #9c27b0;
+        }
+        .section-fasilitas {
+            background-color: #e8f5e9;
+            border-left: 5px solid #4caf50;
+        }
+        .section-dana {
+            background-color: #fff3e0;
+            border-left: 5px solid #ff9800;
+        }
+        .section-kesediaan {
+            background-color: #fce4ec;
+            border-left: 5px solid #e91e63;
+        }
+
+        h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        
+        .section-data h3 { color: #1976d2; border-color: #1976d2; }
+        .section-pendapat h3 { color: #7b1fa2; border-color: #7b1fa2; }
+        .section-fasilitas h3 { color: #388e3c; border-color: #388e3c; }
+        .section-dana h3 { color: #f57c00; border-color: #f57c00; }
+        .section-kesediaan h3 { color: #c2185b; border-color: #c2185b; }
+
+        .important-note {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 0.95em;
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #444;
+        }
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #2a5298;
+        }
+        .radio-group, .checkbox-group {
+            margin-top: 5px;
+        }
+        .radio-item, .checkbox-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            font-weight: normal;
+            background: rgba(255,255,255,0.7);
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .radio-item:hover, .checkbox-item:hover {
+            background: rgba(255,255,255,1);
+        }
+        .radio-item input, .checkbox-item input {
+            margin-right: 10px;
+            margin-top: 5px;
+            transform: scale(1.2);
+        }
+        
+        .verse-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            margin: 20px 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .verse-text {
+            font-size: 1.15em;
+            font-style: italic;
+            margin: 0;
+            line-height: 1.8;
+        }
+        
+        .btn-submit {
+            display: block;
+            width: calc(100% - 50px);
+            margin: 20px auto;
+            padding: 18px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            font-size: 0.9em;
+        }
+        .footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 20px 0;
+            height: 12px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #2196f3, #21cbf3);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="logo-box">
+            <img src="https://i.imgur.com/eMrVC1m.jpeg" alt="Logo GKSBS Palmerah Jambi" class="logo">
+        </div>
+        <h1>GKSBS PALMERAH JAMBI</h1>
+        <h2>Gereja Kristen Sumatra Bagian Selatan</h2>
+        <p class="subtitle">"Membangun Rumah Tuhan Bersama-Sama dalam Kasih Kristus"</p>
+    </div>
+
+    <div class="section section-intro">
+        <p>🕊️ <strong>Shalom, Bapak/Ibu dan Saudara-saudari yang terkasih,</strong></p>
+        <p>Puji Tuhan, pembangunan gedung Sekolah Minggu lantai 2 telah selesai kita laksanakan. Sebagai upaya untuk memastikan gedung ini menjadi tempat belajar Firman yang aman dan nyaman bagi anak-anak kita, kami mengundang Bapak/Ibu untuk memberikan umpan balik terkait hasil pembangunan tersebut.</p>
+        
+        <div class="important-note">
+            <strong>📢 PENTING:</strong> Pengumpulan dana melalui survei ini tidak hanya untuk kelengkapan fasilitas gedung, tetapi juga untuk mendukung biaya perizinan gereja yang sedang dalam proses. Partisipasi Anda sangat berarti bagi pertumbuhan iman generasi muda dan kelancaran administrasi gereja kita.
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+        <p style="text-align: right; font-size: 0.9em; margin-top: -15px; color: #666;">Progress: <span id="progressText">0%</span></p>
+    </div>
+
+    <div class="section section-intro" style="border-top: 1px solid #eee;">
+        <p><strong>📱 Jawaban Survei Akan Dikirim ke:</strong><br>
+        Panitia Pembangunan: 0831-7703-7829</p>
+    </div>
+
+    <form id="surveyForm">
+        <!-- BAGIAN 1: DATA DIRI -->
+        <div class="section section-data">
+            <h3>📋 DATA DIRI JEMAAT</h3>
+            <p class="important-note" style="font-size: 0.9em; background: rgba(255,255,255,0.6);">ℹ️ Penting: Nomor WhatsApp harus diisi dengan format yang benar (contoh: 081234567890). Data ini hanya untuk konfirmasi, tidak akan disalahgunakan.</p>
+            
+            <div class="form-group">
+                <label>Nama Lengkap *</label>
+                <input type="text" id="nama" required placeholder="Masukkan nama lengkap">
+            </div>
+            <div class="form-group">
+                <label>No. WhatsApp *</label>
+                <input type="text" id="whatsapp" required placeholder="081234567890">
+            </div>
+            <div class="form-group">
+                <label>Status Anda *</label>
+                <select id="status" required>
+                    <option value="" disabled selected>-- Pilih Status Anda --</option>
+                    <option value="Jemaat">Jemaat</option>
+                    <option value="Simpatisan">Simpatisan</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- BAGIAN 2: PENDAPAT -->
+        <div class="section section-pendapat">
+            <h3>💬 PENDAPAT ATAS PEMBANGUNAN GEDUNG</h3>
+            <div class="form-group">
+                <label>Bagaimana pendapat Bapak/Ibu/Sdr/i atas terselesaikannya Gedung Sekolah Minggu Lantai 2? *</label>
+                <div class="radio-group">
+                    <div class="radio-item"><input type="radio" name="pendapat" value="Sangat Puas" required> Sangat Puas - Puji Tuhan, pembangunan berjalan dengan baik dan tepat waktu</div>
+                    <div class="radio-item"><input type="radio" name="pendapat" value="Puas"> Puas - Secara umum pembangunan berjalan dengan baik</div>
+                    <div class="radio-item"><input type="radio" name="pendapat" value="Cukup Puas"> Cukup Puas - Ada beberapa hal yang perlu diperhatikan</div>
+                    <div class="radio-item"><input type="radio" name="pendapat" value="Kurang Puas"> Kurang Puas - Perlu evaluasi dan perbaikan</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Kesan, ucapan syukur, atau doa atas terselesaikannya gedung ini:</label>
+                <textarea id="kesan" rows="3" placeholder="Tulis kesan Anda disini..."></textarea>
+            </div>
+        </div>
+
+        <!-- BAGIAN 3: FASILITAS -->
+        <div class="section section-fasilitas">
+            <h3>🎯 HARAPAN KELENGKAPAN FASILITAS</h3>
+            <div class="form-group">
+                <label>Menurut Bapak/Ibu/Sdr/i, apakah Panitia Pembangunan harus menyiapkan seluruh fasilitas lengkap sebelum gedung digunakan untuk Sekolah Minggu? *</label>
+                <div class="radio-group">
+                    <div class="radio-item"><input type="radio" name="fasilitas_lengkap" value="Ya" required> Ya, semua fasilitas harus lengkap agar dapat langsung digunakan secara optimal</div>
+                    <div class="radio-item"><input type="radio" name="fasilitas_lengkap" value="Sebagian"> Sebagian saja terlebih dahulu, sisanya dapat dilengkapi secara bertahap</div>
+                    <div class="radio-item"><input type="radio" name="fasilitas_lengkap" value="Tidak"> Tidak perlu, fasilitas dapat disiapkan kemudian sesuai kebutuhan</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Fasilitas apa saja yang menurut Bapak/Ibu/Sdr/i WAJIB disiapkan oleh Panitia Pembangunan? * (Pilih minimal 5)</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item"><input type="checkbox" name="fasilitas_pilih" value="Sound System"> Sound System</div>
+                    <div class="checkbox-item"><input type="checkbox" name="fasilitas_pilih" value="Mimbar / Podium"> Mimbar / Podium</div>
+                    <div class="checkbox-item"><input type="checkbox" name="fasilitas_pilih" value="Kursi Anak-Anak"> Kursi Anak-Anak</div>
+                    <div class="checkbox-item"><input type="checkbox" name="fasilitas_pilih" value="Kursi Dewasa"> Kursi Dewasa</div>
+                    <div class="checkbox-item"><input type="checkbox" name="fasilitas_pilih" value="Papan Tulis / Whiteboard"> Papan Tulis / Whiteboard</div>
+                    <div class="checkbox-item"><input type="checkbox" name="fasilitas_pilih" value="Proyektor + Layar"> Proyektor + Layar</div>
+                    <div class="checkbox-item"><input type="checkbox" name="fasilitas_pilih" value="Ventilasi / Kipas Angin"> Ventilasi / Kipas Angin</div>
+                    <div class="checkbox-item"><input type="checkbox" name="fasilitas_pilih" value="Rak Buku"> Rak Buku</div>
+                    <div class="checkbox-item"><input type="checkbox" name="fasilitas_pilih" value="Mainan Edukatif"> Mainan Edukatif</div>
+                    <div class="checkbox-item"><input type="checkbox" name="fasilitas_pilih" value="Karpet / Tikar"> Karpet / Tikar</div>
+                    <div class="checkbox-item"><input type="checkbox" name="fasilitas_pilih" value="Tempat Sampah"> Tempat Sampah</div>
+                    <div class="checkbox-item"><input type="checkbox" name="fasilitas_pilih" value="Peralatan Kebersihan"> Peralatan Kebersihan</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Perkiraan biaya yang menurut Bapak/Ibu/Sdr/i pantas untuk melengkapi fasilitas Gedung Sekolah Minggu Lantai 2 dan mendukung proses perizinan gereja: *</label>
+                <select id="perkiraan_biaya" required>
+                    <option value="" disabled selected>-- Pilih Kisaran Biaya --</option>
+                    <option value="Di bawah 20 Jt">Di bawah 20 Jt</option>
+                    <option value="20-50 juta">20-50 juta</option>
+                    <option value="Di atas 50 juta">Di atas 50 juta</option>
+                </select>
+            </div>
+            <p><strong>📌 Catatan Alokasi Dana:</strong><br>
+            1. Kelengkapan sarana prasarana Sekolah Minggu<br>
+            2. Biaya administrasi dan perizinan gereja yang sedang berjalan</p>
+        </div>
+
+        <!-- BAGIAN 4: DANA -->
+        <div class="section section-dana">
+            <h3>💰 USULAN PENGADAAN DANA</h3>
+            <div class="form-group">
+                <label>Menurut Bapak/Ibu/Sdr/i, metode penggalangan dana apa yang paling efektif untuk melengkapi fasilitas Gedung Sekolah Minggu Lantai 2 dan mendukung biaya perizinan gereja? * (Pilih minimal 1)</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item"><input type="checkbox" name="metode_dana" value="Amplop Khusus Persembahan"> Amplop Khusus Persembahan</div>
+                    <div class="checkbox-item"><input type="checkbox" name="metode_dana" value="Bazar / Pasar Murah"> Bazar / Pasar Murah</div>
+                    <div class="checkbox-item"><input type="checkbox" name="metode_dana" value="Penggalangan Dana Online"> Penggalangan Dana Online</div>
+                    <div class="checkbox-item"><input type="checkbox" name="metode_dana" value="Proposal ke Donatur"> Proposal ke Donatur</div>
+                    <div class="checkbox-item"><input type="checkbox" name="metode_dana" value="Ibadah Syukur Khusus"> Ibadah Syukur Khusus</div>
+                    <div class="checkbox-item"><input type="checkbox" name="metode_dana" value="Daur Ulang"> Daur Ulang</div>
+                    <div class="checkbox-item"><input type="checkbox" name="metode_dana" value="Pertunjukan Seni / Konser"> Pertunjukan Seni / Konser</div>
+                    <div class="checkbox-item"><input type="checkbox" name="metode_dana" value="Lelang Amal"> Lelang Amal</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 5: KESEDIAAN -->
+        <div class="section section-kesediaan">
+            <h3>🤝 KESEDIAAN MEMBANTU & SARAN</h3>
+            <div class="form-group">
+                <label>Apakah Bapak/Ibu/Sdr/i bersedia membantu/donasi untuk kelengkapan fasilitas Gedung Sekolah Minggu Lantai 2 dan dukungan biaya perizinan gereja? *</label>
+                <div class="radio-group">
+                    <div class="radio-item"><input type="radio" name="kesediaan" value="Donasi" required> Ya, saya siap membantu dengan donasi</div>
+                    <div class="radio-item"><input type="radio" name="kesediaan" value="Tenaga"> Ya, saya siap membantu dengan tenaga / keahlian</div>
+                    <div class="radio-item"><input type="radio" name="kesediaan" value="Mungkin"> Mungkin, tergantung kebutuhan dan kemampuan</div>
+                    <div class="radio-item"><input type="radio" name="kesediaan" value="Tidak"> Tidak saat ini, tetapi saya tetap mendukung dan mendoakan</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Jika bersedia donasi, kisaran nominal yang Bapak/Ibu/Sdr/i pertimbangkan: *</label>
+                <select id="nominal_donasi" required>
+                    <option value="" disabled selected>-- Pilih Nominal --</option>
+                    <option value="Rp 10.000 - 50.000">Rp 10.000 - 50.000</option>
+                    <option value="Rp 50.000 - 100.000">Rp 50.000 - 100.000</option>
+                    <option value="Rp 100.000 - 500.000">Rp 100.000 - 500.000</option>
+                    <option value="Rp 500.000 - 1.000.000">Rp 500.000 - 1.000.000</option>
+                    <option value="Rp 1.000.000 - 5.000.000">Rp 1.000.000 - 5.000.000</option>
+                    <option value="Rp 5.000.000 - 10.000.000">Rp 5.000.000 - 10.000.000</option>
+                    <option value="Di atas Rp 10.000.000">Di atas Rp 10.000.000</option>
+                    <option value="Tidak ingin menyebutkan">Tidak ingin menyebutkan</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Saran, usulan, atau masukan lain untuk pengembangan Gedung Sekolah Minggu Lantai 2 dan proses perizinan gereja:</label>
+                <textarea id="saran" rows="3" placeholder="Tulis saran Anda disini..."></textarea>
+            </div>
+        </div>
+
+        <!-- AYAT ALKITAB -->
+        <div class="verse-box">
+            <p class="verse-text">✝️ "Hendaklah masing-masing memberikan menurut kerelaan hatinya, jangan dengan sedih hati atau karena paksaan, sebab Allah mengasihi orang yang memberi dengan sukacita." — 2 Korintus 9:7 📱</p>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="kirimWhatsApp()">📱 KIRIM JAWABAN VIA WHATSAPP</button>
+    </form>
+
+    <div class="footer">
+        <p>&copy; 2026 Panitia Pembangunan Gedung Sekolah Minggu Lantai 2<br>
+        Gereja Kristen Sumatra Bagian Selatan (GKSBS) Palmerah Jambi</p>
+        <p>📞 Kontak Panitia: <a href="tel:083177037829">0831-7703-7829</a> | 
+        ✉️ <a href="mailto:gksbs.jambi@gmail.com">gksbs.jambi@gmail.com</a></p>
+        <p><strong>Soli Deo Gloria</strong></p>
+    </div>
+</div>
+
+<script>
+    // Script untuk menghitung progress bar
+    const inputs = document.querySelectorAll('input, select, textarea');
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+
+    function updateProgress() {
+        let total = inputs.length;
+        let filled = 0;
+        inputs.forEach(input => {
+            if (input.type === 'checkbox' || input.type === 'radio') {
+                if (input.checked) filled++;
+            } else if (input.value.trim() !== '') {
+                filled++;
+            }
+        });
+        let percent = Math.round((filled / total) * 100);
+        if(percent > 100) percent = 100;
+        progressBar.style.width = percent + '%';
+        progressText.innerText = percent + '%';
+    }
+
+    inputs.forEach(input => {
+        input.addEventListener('change', updateProgress);
+        input.addEventListener('input', updateProgress);
+    });
+
+    // PERBAIKAN: Script untuk mengirim SEMUA 5 BAGIAN ke WhatsApp
+    function kirimWhatsApp() {
+        // Validasi
+        const nama = document.getElementById('nama').value;
+        const whatsapp = document.getElementById('whatsapp').value;
+        
+        if(!nama || !whatsapp) {
+            alert("Harap isi Nama Lengkap dan No. WhatsApp terlebih dahulu.");
+            return;
+        }
+
+        // --- BAGIAN 1: DATA DIRI ---
+        let pesan = `*SURVEI ASPIRASI JEMAAT - GKSBS PALMERAH JAMBI*\n\n`;
+        pesan += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        pesan += `📋 *BAGIAN 1: DATA DIRI*\n`;
+        pesan += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        pesan += `Nama: ${nama}\n`;
+        pesan += `WhatsApp: ${whatsapp}\n`;
+        pesan += `Status: ${document.getElementById('status').value}\n\n`;
+
+        // --- BAGIAN 2: PENDAPAT ---
+        pesan += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        pesan += `💬 *BAGIAN 2: PENDAPAT*\n`;
+        pesan += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        const pendapat = document.querySelector('input[name="pendapat"]:checked');
+        pesan += `Pendapat: ${pendapat ? pendapat.value : 'Tidak diisi'}\n`;
+        pesan += `Kesan: ${document.getElementById('kesan').value || '-'}\n\n`;
+
+        // --- BAGIAN 3: FASILITAS ---
+        pesan += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        pesan += `🎯 *BAGIAN 3: FASILITAS*\n`;
+        pesan += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        const fasLengkap = document.querySelector('input[name="fasilitas_lengkap"]:checked');
+        pesan += `Fasilitas Lengkap: ${fasLengkap ? fasLengkap.value : 'Tidak diisi'}\n`;
+        
+        let fasWajib = [];
+        document.querySelectorAll('input[name="fasilitas_pilih"]:checked').forEach(cb => {
+            fasWajib.push(cb.value);
+        });
+        pesan += `Fasilitas Wajib: ${fasWajib.length > 0 ? fasWajib.join(', ') : 'Tidak ada pilihan'}\n`;
+        pesan += `Perkiraan Biaya: ${document.getElementById('perkiraan_biaya').value}\n\n`;
+
+        // --- BAGIAN 4: DANA ---
+        pesan += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        pesan += `💰 *BAGIAN 4: USULAN DANA*\n`;
+        pesan += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        let metodeDana = [];
+        document.querySelectorAll('input[name="metode_dana"]:checked').forEach(cb => {
+            metodeDana.push(cb.value);
+        });
+        pesan += `Metode Dana: ${metodeDana.length > 0 ? metodeDana.join(', ') : 'Tidak ada pilihan'}\n\n`;
+
+        // --- BAGIAN 5: KESEDIAAN ---
+        pesan += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        pesan += `🤝 *BAGIAN 5: KESEDIAAN*\n`;
+        pesan += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        const kesediaan = document.querySelector('input[name="kesediaan"]:checked');
+        pesan += `Kesediaan: ${kesediaan ? kesediaan.value : 'Tidak diisi'}\n`;
+        pesan += `Nominal Donasi: ${document.getElementById('nominal_donasi').value}\n`;
+        pesan += `Saran: ${document.getElementById('saran').value || '-'}\n\n`;
+
+        pesan += `━━━━━━━━━━━━━━━━━━━━━━\n`;
+        pesan += `_Terima kasih atas partisipasinya._\n`;
+        pesan += `*Soli Deo Gloria*`;
+
+        // Kirim ke WhatsApp
+        const nomorTujuan = "6283177037829";
+        const url = `https://wa.me/${nomorTujuan}?text=${encodeURIComponent(pesan)}`;
+
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>
